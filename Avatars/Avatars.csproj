@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F6C4469-911F-4262-A27B-D52A1BC2D5DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avatars</RootNamespace>
+    <AssemblyName>Avatars</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AvatarComponents\Avatar.cs" />
+    <Compile Include="AvatarComponents\AvatarManager.cs" />
+    <Compile Include="AvatarComponents\Bless.cs" />
+    <Compile Include="AvatarComponents\Block.cs" />
+    <Compile Include="AvatarComponents\Burst.cs" />
+    <Compile Include="AvatarComponents\Curse.cs" />
+    <Compile Include="AvatarComponents\Flare.cs" />
+    <Compile Include="AvatarComponents\Frostbite.cs" />
+    <Compile Include="AvatarComponents\Gust.cs" />
+    <Compile Include="AvatarComponents\Haste.cs" />
+    <Compile Include="AvatarComponents\Heal.cs" />
+    <Compile Include="AvatarComponents\IMove.cs" />
+    <Compile Include="AvatarComponents\MoveManager.cs" />
+    <Compile Include="AvatarComponents\RockThrow.cs" />
+    <Compile Include="AvatarComponents\Shade.cs" />
+    <Compile Include="AvatarComponents\Shock.cs" />
+    <Compile Include="AvatarComponents\Tackle.cs" />
+    <Compile Include="CharacterComponents\Character.cs" />
+    <Compile Include="CharacterComponents\CharacterManager.cs" />
+    <Compile Include="CharacterComponents\ICharacter.cs" />
+    <Compile Include="CharacterComponents\PCharacter.cs" />
+    <Compile Include="Components\MenuComponent.cs" />
+    <Compile Include="Components\Xin.cs" />
+    <Compile Include="ConversationComponents\Conversation.cs" />
+    <Compile Include="ConversationComponents\ConversationManager.cs" />
+    <Compile Include="ConversationComponents\GameScene.cs" />
+    <Compile Include="ConversationComponents\SceneAction.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="GameStates\BattleOverState.cs" />
+    <Compile Include="GameStates\BattleState.cs" />
+    <Compile Include="GameStates\ConversationState.cs" />
+    <Compile Include="GameStates\DamageState.cs" />
+    <Compile Include="GameStates\GamePlayState.cs" />
+    <Compile Include="GameStates\LevelUpState.cs" />
+    <Compile Include="GameStates\MainMenuState.cs" />
+    <Compile Include="GameStates\TitleIntroState.cs" />
+    <Compile Include="MapComponents\MapManager.cs" />
+    <Compile Include="PlayerComponents\Player.cs" />
+    <Compile Include="PlayerComponents\PPlayer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameStates\BaseGameState.cs" />
+    <Compile Include="StateManager\GameState.cs" />
+    <Compile Include="StateManager\GameStateManager.cs" />
+    <Compile Include="TileEngine\AnimatedSprite.cs" />
+    <Compile Include="TileEngine\Animation.cs" />
+    <Compile Include="TileEngine\Camera.cs" />
+    <Compile Include="TileEngine\Engine.cs" />
+    <Compile Include="TileEngine\Portal.cs" />
+    <Compile Include="TileEngine\PortalLayer.cs" />
+    <Compile Include="TileEngine\TileLayer.cs" />
+    <Compile Include="TileEngine\TileMap.cs" />
+    <Compile Include="TileEngine\TileSet.cs" />
+    <Compile Include="TileEngine\World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AvatarImages\dark.PNG" />
+    <Content Include="Content\AvatarImages\earth.PNG" />
+    <Content Include="Content\AvatarImages\fire.PNG" />
+    <Content Include="Content\AvatarImages\light.PNG" />
+    <Content Include="Content\AvatarImages\water.PNG" />
+    <Content Include="Content\AvatarImages\wind.PNG" />
+    <Content Include="Content\CharacterSprites\teacherone.png" />
+    <Content Include="Content\CharacterSprites\teachertwo.png" />
+    <Content Include="Content\GameScreens\levelup-menu.png" />
+    <Content Include="Content\GameScreens\menuscreen.png" />
+    <Content Include="Content\GameScreens\titlescreen.png" />
+    <Content Include="Content\MIsc\avatarborder.png" />
+    <Content Include="Content\MIsc\avatarhealth.png" />
+    <Content Include="Content\MIsc\selected.png" />
+    <Content Include="Content\MIsc\wooden-button.png" />
+    <Content Include="Content\PlayerSprites\femaleplayer.png" />
+    <Content Include="Content\PlayerSprites\maleplayer.png" />
+    <Content Include="Content\Scenes\scenebackground.png" />
+    <Content Include="Content\Tiles\tileset1.png" />
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Content\Fonts\GameFont.spritefont" />
+    <None Include="Content\Fonts\InterfaceFont.spritefont" />
+    <None Include="Content\Fonts\scenefont.spritefont" />
+    <None Include="Data\Avatars.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Town1.csv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
