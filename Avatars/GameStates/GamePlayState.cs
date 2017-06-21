@@ -258,18 +258,20 @@ namespace Avatars.GameStates
             GameRef.CharacterManager.AddCharacter("teacherone", teacherOne);
             GameRef.CharacterManager.AddCharacter("teachertwo", teacherTwo);
 
-            MapManager.FromFile(@".\Data\Town1.csv", content);
-            map = MapManager.GetMap("test-map");
+            MapManager.FromFile("Town1", content);
+            map = MapManager.GetMap("Town1");
 
             map.Characters.Add("teacherone", new Point(0, 4));
             map.Characters.Add("teachertwo", new Point(4, 0));
 
-            map.PortalLayer.Portals.Add(Rectangle.Empty, new Portal(Point.Zero, Point.Zero, "level1"));
-            map.PortalLayer.Portals.Add(new Rectangle(4, 4, 32, 32), new Portal(new Point(4, 4), new Point(10, 10), "inside"));
+            map.PortalLayer.Portals.Add(Rectangle.Empty, new Portal(Point.Zero, Point.Zero, "Town1"));
+            map.PortalLayer.Portals.Add(new Rectangle(4, 3, 32, 32), new Portal(new Point(4, 3), new Point(4, 3), "Hell1"));
 
-            world.AddMap("level1", map);
-            world.ChangeMap("level1", Rectangle.Empty);
+            world.AddMap("Town1", map);
+            world.ChangeMap("Town1", Rectangle.Empty);
 
+            MapManager.FromFile("Hell1", content);
+            map = MapManager.GetMap("Hell1");
             /*background = new TileLayer(20, 20, 23);           
             edge = new TileLayer(20, 20);
             building = new TileLayer(20, 20);
@@ -278,12 +280,12 @@ namespace Avatars.GameStates
             map = new TileMap(set, background, edge, building, decor, "inside");
             map.FillEdges();
             map.FillBuilding();
-            map.FillDecoration();
+            map.FillDecoration();*/
             map.BuildingLayer.SetTile(9, 19, 18);
 
-            map.PortalLayer.Portals.Add(new Rectangle(9, 19, 32, 32), new Portal(new Point(9, 19), new Point(4, 4), "level1"));
+            map.PortalLayer.Portals.Add(new Rectangle(9, 19, 32, 32), new Portal(new Point(9, 19), new Point(4, 4), "Hell1"));
 
-            world.AddMap("inside", map);*/
+            world.AddMap("Hell1", map);
 
             camera = new Camera();
         }

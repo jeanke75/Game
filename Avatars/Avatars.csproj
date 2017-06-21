@@ -133,6 +133,7 @@
     <None Include="Data\Avatars.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Data\Hell1.csv" />
     <None Include="Data\Town1.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

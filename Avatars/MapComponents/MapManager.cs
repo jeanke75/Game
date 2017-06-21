@@ -31,21 +31,21 @@ namespace Avatars.MapComponents
 
         public static void AddMap(string name, TileMap avatar)
         {
-            if (!mapList.ContainsKey(name))
-                mapList.Add(name, avatar);
+            if (!mapList.ContainsKey(name.ToLowerInvariant()))
+                mapList.Add(name.ToLowerInvariant(), avatar);
         }
 
         public static TileMap GetMap(string name)
         {
-            if (mapList.ContainsKey(name))
-                return mapList[name];
+            if (mapList.ContainsKey(name.ToLowerInvariant()))
+                return mapList[name.ToLowerInvariant()];
 
             return null;
         }
 
         public static void FromFile(string fileName, ContentManager content)
         {
-            using (Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (Stream stream = new FileStream(@".\Data\" + fileName + ".csv", FileMode.Open, FileAccess.Read))
             {
                 try
                 {
@@ -74,7 +74,7 @@ namespace Avatars.MapComponents
                                     TileLayer building = new TileLayer(int.Parse(parts[4]), int.Parse(parts[5]));
                                     TileLayer decor = new TileLayer(int.Parse(parts[4]), int.Parse(parts[5]));
 
-                                    map = new TileMap(set, background, edge, building, decor, "test-map");
+                                    map = new TileMap(set, background, edge, building, decor, fileName);
 
                                     map.FillEdges();
                                     map.FillBuilding();
