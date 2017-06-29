@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Avatars.AvatarComponents;
+using Avatars.CharacterComponents;
 using Avatars.Components;
+using Avatars.ConversationComponents;
+using Avatars.MapComponents;
+using Avatars.PlayerComponents;
 using Avatars.TileEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Avatars.PlayerComponents;
-using Avatars.CharacterComponents;
-using Avatars.ConversationComponents;
-using Avatars.AvatarComponents;
-using Avatars.MapComponents;
 
 namespace Avatars.GameStates
 {
@@ -230,23 +226,6 @@ namespace Avatars.GameStates
             player.AddAvatar("fire", AvatarManager.GetAvatar("fire"));
             player.SetAvatar("fire");
 
-            //Texture2D tiles = GameRef.Content.Load<Texture2D>(@"Tiles\tileset1");
-            //TileSet set = new TileSet(8, 8, 32, 32);
-            //set.Texture = tiles;
-
-            //TileLayer background = new TileLayer(200, 200);
-            //TileLayer edge = new TileLayer(200, 200);
-            //TileLayer building = new TileLayer(200, 200);
-            //TileLayer decor = new TileLayer(200, 200);
-
-            //map = new TileMap(set, background, edge, building, decor, "test-map");
-
-            //map.FillEdges();
-            //map.FillBuilding();
-            //map.FillDecoration();
-
-            //building.SetTile(4, 4, 18);
-
             ConversationManager.CreateConversations(GameRef);
 
             ICharacter teacherOne = Character.FromString(GameRef, "Lance,teacherone,WalkDown,teacherone,water");
@@ -258,34 +237,25 @@ namespace Avatars.GameStates
             GameRef.CharacterManager.AddCharacter("teacherone", teacherOne);
             GameRef.CharacterManager.AddCharacter("teachertwo", teacherTwo);
 
-            MapManager.FromFile("Town1", content);
+            MapManager.FromBinFile("Town1", content);
             map = MapManager.GetMap("Town1");
 
             map.Characters.Add("teacherone", new Point(0, 4));
-            map.Characters.Add("teachertwo", new Point(4, 0));
-
-            map.PortalLayer.Portals.Add(Rectangle.Empty, new Portal(Point.Zero, Point.Zero, "Town1"));
-            map.PortalLayer.Portals.Add(new Rectangle(4, 3, 32, 32), new Portal(new Point(4, 3), new Point(4, 3), "Hell1"));
+            
+            map.PortalLayer.Portals.Add(new Rectangle(7, 3, 32, 32), new Portal(new Point(7, 3), new Point(4, 8), "Basement1"));
 
             world.AddMap("Town1", map);
             world.ChangeMap("Town1", Rectangle.Empty);
 
-            MapManager.FromFile("Hell1", content);
-            map = MapManager.GetMap("Hell1");
-            /*background = new TileLayer(20, 20, 23);           
-            edge = new TileLayer(20, 20);
-            building = new TileLayer(20, 20);
-            decor = new TileLayer(20, 20);
+            MapManager.FromBinFile("Basement1", content);
+            map = MapManager.GetMap("Basement1");
 
-            map = new TileMap(set, background, edge, building, decor, "inside");
-            map.FillEdges();
-            map.FillBuilding();
-            map.FillDecoration();*/
-            map.BuildingLayer.SetTile(9, 19, 18);
+            map.Characters.Add("teachertwo", new Point(4, 1));
 
-            map.PortalLayer.Portals.Add(new Rectangle(9, 19, 32, 32), new Portal(new Point(9, 19), new Point(4, 4), "Hell1"));
+            map.PortalLayer.Portals.Add(new Rectangle(4, 9, 32, 32), new Portal(new Point(4, 9), new Point(7, 4), "Town1"));
+            map.PortalLayer.Portals.Add(new Rectangle(5, 9, 32, 32), new Portal(new Point(5, 9), new Point(7, 4), "Town1"));
 
-            world.AddMap("Hell1", map);
+            world.AddMap("Basement1", map);
 
             camera = new Camera();
         }
